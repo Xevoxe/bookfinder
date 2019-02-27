@@ -8,9 +8,13 @@ class Main extends Component{
     }
     
     render(){
+        const mainStyle={
+            width: '150px',
+        };
+
         return (
             <div>
-                <BookCard />;
+                <BookCard />
             </div>);
     }
 }
