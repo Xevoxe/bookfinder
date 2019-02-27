@@ -6,6 +6,12 @@ class Main extends Component{
    
     constructor(props){
         super(props);
+
+        this.handleSearch = this.handleSearch.bind(this);
+    }
+
+    handleSearch(searchRequest){
+        console.log("Handling Search Term" + searchRequest);
     }
     
     render(){
@@ -15,7 +21,7 @@ class Main extends Component{
 
         return (
             <div>
-                <SearchBook />
+                <SearchBook onSearch={this.handleSearch} />
                 <BookCard />
             </div>);
     }
