@@ -8,6 +8,7 @@ const styles = theme => ({
         flexFlow: 'wrap',
         flexDirection: 'column',
         maxWidth: '500px',
+        minWidth: '300px',
         marginTop:'50px',
         overflow: 'visible',
         padding:'0px 20px',

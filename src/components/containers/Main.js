@@ -1,5 +1,6 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import BookCard from "../views/BookCard";
+import SearchBook from '../containers/SearchBook';
 
 class Main extends Component{
    
@@ -14,6 +15,7 @@ class Main extends Component{
 
         return (
             <div>
+                <SearchBook />
                 <BookCard />
             </div>);
     }
