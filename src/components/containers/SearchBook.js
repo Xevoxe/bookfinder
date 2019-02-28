@@ -17,14 +17,13 @@ class SearchBook extends Component{
 
     handleChange(evt){
         let search = evt.target.value;
-        this.setState((state,props) => ({
+        this.setState(() => ({
             searchValue: search
         }));
     }
 
     handleSubmit (evt){
         evt.preventDefault();
-        console.log(evt.target);
         this.props.onSearch(this.state.searchValue);
     }
 
