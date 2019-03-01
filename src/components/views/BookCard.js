@@ -53,9 +53,6 @@ const BookCard = (props) => {
                     <Typography  fontWeight={600} component="h2" variant="h6" color="textSecondary">
                        {title}
                     </Typography>
-                    <Typography  fontWeight={600} component="h2" variant="h6" color="textSecondary" gutterBottom>
-                       {subTitle}
-                    </Typography>
                     <Typography component="h3" variant="subtitle1" color="textSecondary">
                         By: {authors}
                     </Typography>

@@ -20,12 +20,13 @@ const styles = theme => ({
 const ResultsView = (props) =>
 {
     const {classes, volumes} = props;
+    console.log(volumes);
     
     return (
         <div className={classes.resultsContainer}>
-            {volumes.map((book)=>{
+            {volumes.map((book,index)=>{
                 return (
-                    <div className={classes.bookCard}>
+                    <div key={index} className={classes.bookCard}>
                     <BookCard
                         image={book.volumeInfo.imageLinks.smallThumbnail}
                         authors={book.volumeInfo.authors}

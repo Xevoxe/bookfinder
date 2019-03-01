@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 const SearchInput = (props) =>{
     const {onSubmit, onChange} = props;
+
     return(
         <form onSubmit={onSubmit}>
             <TextField

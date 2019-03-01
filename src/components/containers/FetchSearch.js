@@ -10,9 +10,29 @@ const FetchSearch = WrappedComponent =>{
                 volumes: null
             }
         }
+
     componentDidMount(){
         //Fetch Data from API
-        console.log(this.state.search);
+       this.fetchData();
+    }
+
+    componentDidUpdate(prevProps,prevState){
+        if(prevProps.search !== this.state.search){
+            this.fetchData();
+        }
+    }
+
+    static getDerivedStateFromProps(nextProps,prevState){
+        if(nextProps.search != prevState.search){
+            return {search: nextProps.search,
+                    loading: true};
+        }
+        else
+        return null;
+    }
+
+    fetchData(){
+        console.log("Fetching Data");
         fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.search}&projection=lite`)
             .then(res => res.json())
             .then(
@@ -27,7 +47,6 @@ const FetchSearch = WrappedComponent =>{
     
 
     render(){
-        console.log(this.state.volumes);
         return (
             <div>
                 {this.state.loading ? <RenderLoading />: <WrappedComponent volumes={this.state.volumes} />}

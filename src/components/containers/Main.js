@@ -24,8 +24,7 @@ class Main extends Component{
     render(){
         const mainStyle={
             width: '150px',
-        };
-        console.log(this.state.search);
+        }
         return (
             <div>
                 <SearchBook onSearch={this.handleSearch} />
