@@ -1,6 +1,6 @@
 import React from "react";
-import {Card,CardMedia,Grid, Typography,Paper,Button, withStyles} from "@material-ui/core";
-import { wrap } from "module";
+import {Card,CardMedia, Typography,Paper,Button, withStyles} from "@material-ui/core";
+
 
 const styles = theme => ({
     container: {
@@ -38,9 +38,7 @@ const styles = theme => ({
 
 const BookCard = (props) => {
 
-    const {classes, image, authors, publisher, title, subTitle, link} = props;
-    console.log(image);
-    console.log(title);
+    const {classes, image, authors, publisher, title, link} = props;
     return ( 
             <Card className={classes.container}> 
                 <Paper className={classes.bookCover} elevation={10}>

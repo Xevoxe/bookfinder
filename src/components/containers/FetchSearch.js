@@ -36,7 +36,6 @@ const FetchSearch = WrappedComponent =>{
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
                     this.setState({
                         loading: false,
                         volumes: result.items

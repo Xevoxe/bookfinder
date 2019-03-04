@@ -1,8 +1,7 @@
 import React, {Component, Fragment} from "react";
-import BookCard from "../views/BookCard";
 import SearchBook from '../containers/SearchBook';
 import Results from '../views/ResultsView';
-import { Typography, withStyles } from "@material-ui/core";
+import { Typography} from "@material-ui/core";
 
 
 class Main extends Component{
