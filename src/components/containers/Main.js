@@ -2,6 +2,8 @@ import React, {Component, Fragment} from "react";
 import BookCard from "../views/BookCard";
 import SearchBook from '../containers/SearchBook';
 import Results from '../views/ResultsView';
+import { Typography, withStyles } from "@material-ui/core";
+
 
 class Main extends Component{
    
@@ -9,7 +11,7 @@ class Main extends Component{
         super(props);
 
         this.state = ({
-            search: null
+            search: ""
         })
 
         this.handleSearch = this.handleSearch.bind(this);
@@ -22,13 +24,13 @@ class Main extends Component{
     }
     
     render(){
-        const mainStyle={
-            width: '150px',
-        }
         return (
             <div>
+                <Typography fontWeight={600} component="h1" variant="h1" color="textSecondary" >
+                    BookFinder!
+                </Typography>
                 <SearchBook onSearch={this.handleSearch} />
-                {this.state.search ? <Results search={this.state.search} /> : null}
+                <Results search={this.state.search} /> 
             </div>);
     }
 }

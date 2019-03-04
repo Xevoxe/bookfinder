@@ -46,7 +46,7 @@ const BookCard = (props) => {
                     <CardMedia
                         component="img"
                         image={image}
-                        title="Hunger Games"
+                        title={title}
                     />
                 </Paper>
                 <div className={classes.contentDetails}>

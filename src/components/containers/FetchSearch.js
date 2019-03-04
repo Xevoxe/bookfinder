@@ -6,14 +6,13 @@ const FetchSearch = WrappedComponent =>{
             super(props);
             this.state = {
                 search: props.search,
-                loading: true,
                 volumes: null
             }
         }
 
     componentDidMount(){
         //Fetch Data from API
-       this.fetchData();
+     //  this.fetchData();
     }
 
     componentDidUpdate(prevProps,prevState){
@@ -25,7 +24,7 @@ const FetchSearch = WrappedComponent =>{
     static getDerivedStateFromProps(nextProps,prevState){
         if(nextProps.search != prevState.search){
             return {search: nextProps.search,
-                    loading: true};
+                    volumes: []};
         }
         else
         return null;
@@ -49,19 +48,12 @@ const FetchSearch = WrappedComponent =>{
     render(){
         return (
             <div>
-                {this.state.loading ? <RenderLoading />: <WrappedComponent volumes={this.state.volumes} />}
+                {<WrappedComponent volumes={this.state.volumes} />}
             </div>
         )
     }
 }
 }
 
-//Loading Spinner
-const RenderLoading = ()=>{
-    console.log("Loading");
-    return <div>Loading!</div>
-}
-
-    
 
 export default FetchSearch;
