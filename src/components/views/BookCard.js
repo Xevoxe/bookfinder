@@ -39,7 +39,8 @@ const styles = theme => ({
 const BookCard = (props) => {
 
     const {classes, image, authors, publisher, title, subTitle, link} = props;
- 
+    console.log(image);
+    console.log(title);
     return ( 
             <Card className={classes.container}> 
                 <Paper className={classes.bookCover} elevation={10}>

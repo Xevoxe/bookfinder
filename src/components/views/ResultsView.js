@@ -3,6 +3,7 @@ import FetchSearch from '../containers/FetchSearch';
 import BookCard from '../views/BookCard';
 import {withStyles, CircularProgress, Typography} from '@material-ui/core';
 import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
+import stockImage from '../../images/no-image-icon-15.png';
 
 const styles = theme => ({
     resultsContainer: {
@@ -50,7 +51,7 @@ const ResultsView = (props) =>
                         return (
                             <div key={index} className={classes.bookCard}>
                             <BookCard
-                                image={book.volumeInfo.imageLinks.smallThumbnail}
+                                image={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : stockImage }
                                 authors={book.volumeInfo.authors}
                                 publisher={book.volumeInfo.publisher}
                                 title={book.volumeInfo.title}

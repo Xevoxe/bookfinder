@@ -22,7 +22,7 @@ const FetchSearch = WrappedComponent =>{
     }
 
     static getDerivedStateFromProps(nextProps,prevState){
-        if(nextProps.search != prevState.search){
+        if(nextProps.search !== prevState.search){
             return {search: nextProps.search,
                     volumes: []};
         }
@@ -36,6 +36,7 @@ const FetchSearch = WrappedComponent =>{
             .then(res => res.json())
             .then(
                 (result) => {
+                    console.log(result);
                     this.setState({
                         loading: false,
                         volumes: result.items
