@@ -35,10 +35,17 @@ const styles = theme => ({
 
 const ResultsView = (props) =>
 {
-    const {classes, volumes} = props;
+    const {classes, volumes, errors} = props;
     return (
         <div className={classes.resultsContainer}>
-            {!volumes ?
+            {errors ? 
+                <div className={classes.emptyResults}>
+                <SentimentDissatisfied color="primary" className={classes.icon} />
+                <Typography fontWeight={600} component="h2" variant="h6" color="textSecondary">
+                    There was a problem searching for your book.  Please try again later.
+                </Typography>
+            </div>
+            : !volumes ?
                 <div className={classes.emptyResults}>
                     <SentimentDissatisfied color="primary" className={classes.icon} />
                     <Typography fontWeight={600} component="h2" variant="h6" color="textSecondary">

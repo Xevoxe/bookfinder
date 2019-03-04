@@ -6,7 +6,8 @@ const FetchSearch = WrappedComponent =>{
             super(props);
             this.state = {
                 search: props.search,
-                volumes: null
+                volumes: null,
+                errors: null
             }
         }
 
@@ -24,16 +25,24 @@ const FetchSearch = WrappedComponent =>{
     static getDerivedStateFromProps(nextProps,prevState){
         if(nextProps.search !== prevState.search){
             return {search: nextProps.search,
-                    volumes: []};
+                    volumes: [],
+                    errors: null};
         }
         else
         return null;
     }
 
     fetchData(){
-        console.log("Fetching Data");
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.search}&projection=lite`)
-            .then(res => res.json())
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.search}&projection=lite`)//https://www.googleapis.com/books/v1/volumes?q=${this.state.search}&projection=lite
+            .then(res =>{
+                if(res.ok){
+                    return res.json();
+                }else
+                    return Promise.reject({
+                        status: res.status,
+                        statusText: Response.statusText
+                    }); 
+            })
             .then(
                 (result) => {
                     this.setState({
@@ -42,13 +51,19 @@ const FetchSearch = WrappedComponent =>{
                     });
             }
             )
+            .catch(error => {
+                this.setState(()=>({
+                    errors: error
+                }));
+                console.log(error);
+            })
     }
     
 
     render(){
         return (
             <div>
-                {<WrappedComponent volumes={this.state.volumes} />}
+                {<WrappedComponent volumes={this.state.volumes} errors={this.state.errors}/>}
             </div>
         )
     }

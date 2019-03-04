@@ -24,7 +24,9 @@ class SearchBook extends Component{
 
     handleSubmit (evt){
         evt.preventDefault();
-        this.props.onSearch(this.state.searchValue);
+        if(this.state.searchValue.length > 0){
+            this.props.onSearch(this.state.searchValue);
+        }
     }
 
     render(){
