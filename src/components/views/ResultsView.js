@@ -4,9 +4,10 @@ import BookCard from '../views/BookCard';
 import {withStyles, CircularProgress, Typography} from '@material-ui/core';
 import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
 import stockImage from '../../images/no-image-icon-15.png';
+import Pagination from '../views/Pagination';
 
 const styles = theme => ({
-    resultsContainer: {
+    bookContainer: {
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "space-evenly",
@@ -31,20 +32,30 @@ const styles = theme => ({
     icon: {
         margin:"auto",
     },
+    pagination: {
+        display:'inline-flex',
+        alignItems: 'center',
+    },
+    resultsContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems:'center',
+    }
+    
 });
 
 const ResultsView = (props) =>
 {
-    const {classes, volumes, errors} = props;
+    const {classes, volumes, errors, totalItems,pagination} = props;
     return (
-        <div className={classes.resultsContainer}>
+        <div>
             {errors ? 
                 <div className={classes.emptyResults}>
                 <SentimentDissatisfied color="primary" className={classes.icon} />
                 <Typography fontWeight={600} component="h2" variant="h6" color="textSecondary">
                     There was a problem searching for your book.  Please try again later.
                 </Typography>
-            </div>
+                </div>
             : !volumes ?
                 <div className={classes.emptyResults}>
                     <SentimentDissatisfied color="primary" className={classes.icon} />
@@ -54,7 +65,10 @@ const ResultsView = (props) =>
                 </div>
                 : volumes.length > 0 
                 ? 
-                    volumes.map((book,index)=>{
+                <div className={classes.resultsContainer}>
+                    <Pagination className={classes.pagination} set={props.set} volumes={volumes.length} pagination={pagination} onPageChange={props.onPageChange}/>
+                    <div className={classes.bookContainer}> 
+                    {volumes.map((book,index)=>{
                         return (
                             <div key={index} className={classes.bookCard}>
                             <BookCard
@@ -66,7 +80,9 @@ const ResultsView = (props) =>
                                 link={book.volumeInfo.infoLink}
                             />
                             </div>
-                        )})
+                        )})}
+                    </div>
+                </div>
                 : <CircularProgress size={100} className={classes.loading}/>
             }
         </div>
